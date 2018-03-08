@@ -7,7 +7,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://xuesemofa:wangzheshengcun@localhost:9001/eureka/
-    status-page-url: ${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+  status-page-url: ${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
 
 server:
   port: 9003
@@ -33,6 +33,3 @@ logging:
     org:
       account:
         com: debug
-
-page:
-  size: 15

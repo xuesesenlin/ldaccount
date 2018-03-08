@@ -1,5 +1,6 @@
 package org.account.com;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -13,6 +14,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class Swagger2 {
+    @Value("${eureka.instance.status-page-url}")
+    String pageUrl;
     // http://localhost:9003/swagger-ui.html
     // Swagger2默认将所有的Controller中的RequestMapping方法都会暴露，
     // 然而在实际开发中，我们并不一定需要把所有API都提现在文档中查看，这种情况下，使用注解
@@ -28,6 +31,6 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("账户系统").description("RESTful接口详情")
-                .termsOfServiceUrl("http://localhost:9003/swagger-ui.html").contact("LD").version("1.0").build();
+                .termsOfServiceUrl(pageUrl).contact("LD").version("1.0").build();
     }
 }
